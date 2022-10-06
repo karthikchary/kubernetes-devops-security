@@ -27,11 +27,11 @@ pipeline {
         steps {
           sh "mvn org.pitest:pitest-maven:mutationCoverage"
         }
-        // post {
-        //   always {
-        //     pitmutaion mutationStatsFile: '**/target/pit-reports/**/mutation.xml'
-        //   }
-        // }
+        post {
+          always {
+            pitmutaion mutationStatsFile: '**/target/pit-reports/**/mutation.xml'
+          }
+        }
       }
 
       stage('Docker Build and Push') {
