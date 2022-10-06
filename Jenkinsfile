@@ -7,7 +7,7 @@ pipeline {
       stage('Build Artifact') {
             steps {
               sh "mvn clean package -DskipTests=true"
-              archive 'target/*.jar' //so that they can be downloaded later
+              archive 'target/*.jar'
             }
         }
 
@@ -27,10 +27,16 @@ pipeline {
         steps {
           sh "mvn org.pitest:pitest-maven:mutationCoverage"
         }
-        post {
-          always {
-            pitmutaion mutationStatsFile: '**/target/pit-reports/**/mutation.xml'
-          }
+        // post {
+        //   always {
+        //     pitmutaion mutationStatsFile: '**/target/pit-reports/**/mutation.xml'
+        //   }
+        // }
+      }
+   
+      stage('SonarQube Analysis') {
+        withSonarQubeEnv() {
+          sh "mvn clean verify sonar:sonar -Dsonar.projectKey=numeric-application"
         }
       }
 
