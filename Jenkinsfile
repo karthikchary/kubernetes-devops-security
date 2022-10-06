@@ -35,9 +35,9 @@ pipeline {
       }
    
       stage('SonarQube Analysis') {
-      
+        steps{
           sh "mvn sonar:sonar -Dsonar.projectKey=numeric-application -Dsonar.login=sqa_29e44a6e7401840cf8178bbe670f1fc01045c878"
-        
+        }
       }
 
       stage('Docker Build and Push') {
