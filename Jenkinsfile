@@ -31,7 +31,7 @@ pipeline {
    
       stage('SonarQube Analysis') {
         steps{
-          sh "mvn clean verify sonar:sonar  -Dsonar.projectKey=numeric-application -Dsonar.host.url=https://9000-port-aa916a991fe646ff.labs.kodekloud.com -Dsonar.login=sqp_0807529f689d4af0bd620d4f89b5ecd7719f15ed"
+          sh "mvn clean verify sonar:sonar -Dsonar.projectKey=numeric-application -Dsonar.host.url=https://9000-port-eca3740fbbe0421c.labs.kodekloud.com -Dsonar.login=sqp_1f710e7f27782358573346559761e2d2179440e1"
         }
       }
 
@@ -44,10 +44,8 @@ pipeline {
             "Trivy Scan": {
               sh "bash trivy-docker-image-scan.sh"
             }
-          )
-          
+          ) 
         }
-        
       }
 
       stage('Docker Build and Push') {
