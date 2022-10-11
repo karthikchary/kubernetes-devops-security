@@ -31,7 +31,7 @@ pipeline {
    
       stage('SonarQube Analysis') {
         steps{
-          sh "mvn clean verify sonar:sonar -Dsonar.projectKey=numeric-application -Dsonar.host.url=https://9000-port-eca3740fbbe0421c.labs.kodekloud.com -Dsonar.login=sqp_1f710e7f27782358573346559761e2d2179440e1"
+          sh "mvn clean verify sonar:sonar -Dsonar.projectKey=numeric-application  -Dsonar.host.url=https://9000-port-aff13c0a7aff4d57.labs.kodekloud.com  -Dsonar.login=sqp_09aee1a889298de342487978aed6b180f77f500e"
         }
       }
 
